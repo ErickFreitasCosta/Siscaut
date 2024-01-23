@@ -399,7 +399,7 @@ const Modem = (props) => {
   }
 
 
-
+//////////////PESQUISA////////////////
   function Pesquisa(e){
    console.log(e)
    
@@ -413,7 +413,11 @@ const Modem = (props) => {
    } else {
      setFilter(filteredAparelhos);
    }
+   if( e === ""){
+    setFilter([])
+  }
  }
+ //////////////////////
 
   return (
     <>

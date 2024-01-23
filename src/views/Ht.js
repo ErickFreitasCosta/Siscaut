@@ -136,6 +136,8 @@ async function excluirHt(id){
   });
 }
 ///////////////////////////////////////////////////////////////////////////////////////
+
+////////////////PESQUISA/////////////////////////////
 const [filter, setFilter] = useState([]);
 
 function Pesquisa(e){
@@ -151,7 +153,12 @@ function Pesquisa(e){
  } else {
    setFilter(filteredHts);
  }
+ if( e === ""){
+  setFilter([])
 }
+}
+
+/////////////////////////////
 
   return (
     <>

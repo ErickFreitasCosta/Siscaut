@@ -27,7 +27,7 @@ const Index = (props) => {
   const [filter, setFilter] = useState([]);
   const [renderizar, setRenderizar] = useState(false);
 
-  
+
 
   
   ///////////////////////paginação tentativa///////////////////////////
@@ -74,6 +74,8 @@ const Index = (props) => {
    
   }
 
+  
+
   /////////////////////FUNÇÃO DE EXIBIÇÃO 
   useEffect(() => {
     async function loadMilitares() {
@@ -101,6 +103,9 @@ const Index = (props) => {
   }, [renderizar]); // Load data once on initial render
 
 
+  
+  //////////////////
+
 
   // useEffect(() => {
   //   if (filter.trim() === "") {
@@ -118,18 +123,28 @@ const Index = (props) => {
 
   //   setMilitares(filteredMilitares);
   // }, [filter]);
+
+
+ 
+
+
+
+
+  /////////////////////////////Pesquisa/////////////////////
   function Pesquisa(e){
    
     
     const filteredMilitares = militares.filter(militar =>
       militar.rg.toLowerCase().includes(e.toLowerCase())
     );
-   
     if (filteredMilitares.length === 0) {
       toast.error("Nenhum Aparelho foi encontrado");
       
     } else {
       setFilter(filteredMilitares);
+    }
+    if( e === ""){
+      setFilter([])
     }
   }
 
@@ -169,7 +184,7 @@ const Index = (props) => {
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
                   <tr>
-                    <th scope="col">Nome</th>
+                    <th scope="col">Nome </th>
                     <th scope="col">Rg</th>
                     <th scope="col">Posto/Grad</th>
                     <th scope="col">Unidade</th>
