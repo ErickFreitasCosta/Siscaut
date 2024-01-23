@@ -81,8 +81,7 @@ const AparelhosCautelados = (props) => {
   };
  */
   const [aparelhos, setAparelhos] = useState([]);
-  /* const [renderizar, setRenderizar] = useState(false);
-  const[filter, setFilter] = useState() */
+   const [renderizar, setRenderizar] = useState(false);
 
 
   const [itensPerPage, setItensPerPage] = useState(5)
@@ -127,7 +126,7 @@ const AparelhosCautelados = (props) => {
 
     //  função de limpeza para interromper a observação quando o componente for desmontado
     return () => unsub();
-  }, []); 
+  }, [renderizar]); 
   /////////////////////////////////////////////////////////////////////////////////////////
 
   ///////////////////////////////////////função excluir///////////////////////////////////
@@ -166,12 +165,8 @@ await updateDoc(docChip, {
 
 toast.error("Cautela excluída");
     
-      /*
-      .catch((error) => {
-        toast.error("Algo deu errado, tente novamente mais tarde");
-        setRenderizar(!renderizar);
-        setFilter([]);
-      }); */
+setRenderizar(!renderizar)
+setFilter([])
 
     }catch(error){
       toast.error("Algo deu errado, tente novamente mais tarde");
@@ -180,6 +175,31 @@ toast.error("Cautela excluída");
 
   }
   ///////////////////////////////////////////////////////////////////////////////////////
+
+
+  ///////////////////////////////////// FUNÇÃO PESQUISA  ////////////////////////////////////////////////
+const [filter, setFilter] = useState([]);
+
+function Pesquisa(e){
+    
+    
+  const filteredAparelhos = aparelhos.filter(aparelho =>
+    aparelho.imei1.toLowerCase().includes(e.toLowerCase())
+  );
+  console.log(filteredAparelhos,"APARELJP")
+  if (filteredAparelhos.length === 0) {
+    toast.error("Nenhum Aparelho foi encontrado");
+    
+  } else {
+    setFilter(filteredAparelhos);
+  }
+  if( e === ""){
+    setFilter([])
+  }
+}
+// ____________________________________________________________________________________________________________
+
+
 
   return (
     <>
@@ -192,21 +212,14 @@ toast.error("Cautela excluída");
           <Col className="mb-5 mb-xl-0" xl="10">
             <Card className="shadow">
               <CardHeader className="border-0">
-                <Row className="align-items-center">
-                  <div className="col">
-                    <h3 className="mb-0">Aparelhos</h3>
+              <Row className="align-items-center">
+                <div className="conteinerSearch">
+                    <div className="col divADICIONAR">
+                      <h3 className="mb-0">Aparelhos Cautelados</h3>
+                      <input type="search" placeholder='Pesquisa por imei' onChange={(e) => Pesquisa(e.target.value)} />
+                     </div>
+    
                   </div>
-                  <div></div>
-                  {/* <div className="col text-right">
-                    <Button
-                      color="primary"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      See all
-                    </Button>
-                  </div> */}
                 </Row>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
@@ -223,6 +236,35 @@ toast.error("Cautela excluída");
                     <th scope="col">Ações</th>
                   </tr>
                 </thead>
+                {filter.length > 0 ? 
+                <tbody>
+                   
+                   {filter.map((aparelhos) =>{
+                          /* setMarca(aparelhos.modelo) */
+                      
+                    return(
+                      <tr key={aparelhos.id}>
+                        <th scope="row">{aparelhos.modelo}</th>
+                        <th>{aparelhos.marca}</th>
+                        <th>{aparelhos.imei1}</th>
+                        <th>{aparelhos.imei2}</th>
+                        <td>
+                          <div>
+                            <div className="OrganizarBotoes">
+                              <ModalInfDescaut data={aparelhos} />
+                              <ModalExcluir func={() => desfazerCautela(aparelhos.id)} />
+                              
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )
+                   })}
+
+
+                </tbody>
+                :
+
                 <tbody>
                  
 
@@ -248,6 +290,7 @@ toast.error("Cautela excluída");
                     );
                   })}
                 </tbody>
+}
               </Table>
 
               <nav aria-label="Page navigation example">

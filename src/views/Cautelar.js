@@ -130,7 +130,7 @@ const Aparelho = (props) => {
    
    
    const filteredAparelhos = aparelhos.filter(aparelho =>
-     aparelho.imei1.toLowerCase().includes(e.toLowerCase())
+     aparelho.modelo.toLowerCase().includes(e.toLowerCase())
    );
    console.log(filteredAparelhos,"APARELJP")
    if (filteredAparelhos.length === 0) {
@@ -139,6 +139,9 @@ const Aparelho = (props) => {
    } else {
      setFilter(filteredAparelhos);
    }
+   if( e === ""){
+    setFilter([])
+  }
  }
  // ____________________________________________________________________________________________________________
   
@@ -241,7 +244,7 @@ const Aparelho = (props) => {
                    <div className="conteinerSearch">
                     <div className="col divADICIONAR">
                       <h3 className="mb-0">Aparelhos</h3>
-                      <input type="search" placeholder='Pesquisa por Imei' onChange={(e) => Pesquisa(e.target.value)} />
+                      <input type="search" placeholder='Digite o modelo do aparelho' onChange={(e) => Pesquisa(e.target.value)} />
                      </div>
                     
                     
