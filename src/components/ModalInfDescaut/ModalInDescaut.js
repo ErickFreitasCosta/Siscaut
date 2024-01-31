@@ -501,6 +501,8 @@ import {
   Col,
   Spinner,
   Alert,
+  CustomInput,
+  Label,
 } from "reactstrap";
 import "./ModalDescaut.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -526,6 +528,10 @@ function Modall(props) {
   const [idChip, setIdChip] = useState("");
   const [nunChip, setNunChip] = useState("");
   const [idMilitar, setIdMilitar] = useState("");
+  const [manual, setManual] = useState ('')
+  const [carregador, setCarregador] = useState ('')
+  const [obsercao, setObservacao] = useState ('')
+
   const [nomeMilitar, setNomeMilitar] = useState([]);
   const [dataFiscal, setDataFiscal] = useState([]);
 
@@ -732,7 +738,7 @@ function Modall(props) {
     ]);
 
     try {
-      if (nomeFiscal === "") {
+      if (nomeFiscal === "" || manual=== '' || carregador === "") {
         setEmptyevalue(true);
       } else {
         dadosParaUpdate.forEach(async (documento) => {
@@ -765,6 +771,8 @@ function Modall(props) {
           modelo: docSnapAparelho.data().modelo,
           fiscal_devolu: nomeFiscal,
           date_devolu: dataAtual.toISOString(),
+          carregador: carregador,
+          manual: manual,
           date_caut: datacautela,
         });
 
@@ -864,6 +872,82 @@ function Modall(props) {
                     )}
                   </FormGroup>
                 </Col>
+                      
+
+
+
+
+                <Col lg="4">
+                        
+                    
+                        <FormGroup>
+                           <Label for="exampleCheckbox">Tem manual ?</Label>
+                         </FormGroup>
+                         <FormGroup></FormGroup>
+
+
+
+
+                       <div className="pl-lg-4">
+     
+                           <Row>
+
+                           <Col lg="4">
+
+                           <CustomInput type="radio" id="exampleCustomRadio" onChange={(e)=> setManual (e.target.value)} name="customRadio" label="SIM" value="1" />
+                           </Col>
+                           <Col lg="10">
+
+                           <CustomInput type="radio" id="exampleCustomRadio2" onChange={(e)=> setManual (e.target.value)} name="customRadio" label="NÃO" value="0" />
+                           </Col>
+                           {emptyevalue && manual ==='' ? <Alert color='danger'>Informe se possui manual.</Alert> :''}
+                           </Row>
+                           
+
+
+                           </div>
+                     </Col>
+
+                     <Col lg="4">
+
+                        <FormGroup>
+                           <Label for="exampleCheckbox">Tem carregador?</Label>
+                         </FormGroup>
+                         <FormGroup></FormGroup>
+
+
+
+
+                       <div className="pl-lg-4">
+                           <Row> 
+                           <Col lg="4">
+                           <CustomInput type="radio" id="CustomRadioCarregador" onChange={(e)=> setCarregador (e.target.value)} name="CustomRadioCarregador" label="SIM" value="1" />
+                           </Col>
+                           <Col lg="10">
+                           <CustomInput type="radio" id="CustomRadio2Carregador" onChange={(e)=> setCarregador (e.target.value)} name="CustomRadioCarregador" label="NÃO" value="0" />
+                           </Col>
+                           {emptyevalue && carregador ==='' ? <Alert color='danger'>Informe se possui carregador .</Alert> :''}
+                           </Row>
+                           
+
+
+                           </div>
+                     </Col>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <Col lg="6">
                   <FormGroup>

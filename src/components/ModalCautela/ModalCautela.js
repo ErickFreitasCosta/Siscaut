@@ -345,7 +345,7 @@ function Modall(props) {
                             <Col lg="10">
                             <CustomInput type="radio" id="CustomRadio2Carregador" onChange={(e)=> setCarregador (e.target.value)} name="CustomRadioCarregador" label="NÃO" value="0" />
                             </Col>
-                            {emptyevalue && carregador ==='' ? <Alert color='danger'>Informe se possui carregador.</Alert> :''}
+                            {emptyevalue && carregador ==='' ? <Alert color='danger'>Informe se possui carregador .</Alert> :''}
                             </Row>
                             
 
