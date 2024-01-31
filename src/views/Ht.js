@@ -258,8 +258,6 @@ function Pesquisa(e){
                               title='Ht'
                               func={() => excluirHt(hts.id)} />
                             </div>
-
-
                           </div>
                         </td>
                       </tr>
