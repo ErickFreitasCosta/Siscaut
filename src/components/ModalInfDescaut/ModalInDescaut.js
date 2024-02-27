@@ -527,6 +527,8 @@ function Modall(props) {
   const [modal, setModal] = useState(false);
   const [idChip, setIdChip] = useState("");
   const [nunChip, setNunChip] = useState("");
+  const [nSerieChip, setNSerieChip] = useState("");
+
   const [idMilitar, setIdMilitar] = useState("");
   const [manual, setManual] = useState ('')
   const [carregador, setCarregador] = useState ('')
@@ -534,6 +536,7 @@ function Modall(props) {
 
   const [nomeMilitar, setNomeMilitar] = useState([]);
   const [dataFiscal, setDataFiscal] = useState([]);
+  const [dataAcessorios, setDataAcessorios] = useState([]);
 
 
   const [fiscais, setFiscais] = useState([]);
@@ -554,7 +557,7 @@ function Modall(props) {
          setModal(!modal);
        };
 
-       ///////////////////////////////////////////////////Pega Data e Fiscal //////////////////////////////////////////////////////////////////
+       ///////////////////////////////////////////////////Pega Data, Fiscal e acessórios //////////////////////////////////////////////////////////////////
 
        useEffect(() => {
         async function PegaDataFiscal() {
@@ -568,13 +571,20 @@ function Modall(props) {
             querySnapshot.forEach((doc) => {
               const valorDoCampoData = format(Date.parse(doc.data().date_caut), 'dd/MM/yyyy')
               const valorDoCampoFiscal = doc.data().fiscal_caut;
+              const carregador = doc.data().carregador;
+              const manual = doc.data().manual;
 
               const DataFiscal = {
                 data: valorDoCampoData,
                 fiscal: valorDoCampoFiscal
+                
               };
-
+              const DataAcessorios = {
+                carregador : carregador,
+                manual : manual
+              }
               setDataFiscal(DataFiscal);
+              setDataAcessorios(DataAcessorios)
             });
     
           } catch (error) {
@@ -616,7 +626,9 @@ function Modall(props) {
 
       if (docSnap.exists()) {
         const numero = docSnap.data().numero;
+        const nseriechip = docSnap.data().nserie;
         setNunChip(numero);
+        setNSerieChip(nseriechip)
       } else {
         console.log("O documento não foi encontrado.");
       }
@@ -1046,14 +1058,17 @@ function Modall(props) {
               modelo: formData.modelo, 
               imei1: formData.imei1, 
               imei2: formData.imei2, 
-              numero: nunChip, 
+              numero: nunChip,
+              nSerieChip: nSerieChip, 
               nome: nomeMilitar.nome,
               rg: nomeMilitar.rg,
               funcao: nomeMilitar.funcao,
               postgrad: nomeMilitar.postgrad,
               unidade:nomeMilitar.unidade,
               data: dataFiscal.data,
-              fiscal: dataFiscal.fiscal
+              fiscal: dataFiscal.fiscal,
+              manual: dataAcessorios.manual,
+              carregador: dataAcessorios.carregador
 
             })}
           >

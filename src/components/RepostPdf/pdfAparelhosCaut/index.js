@@ -5,22 +5,24 @@ import user from "components/ModalInfDescaut/ModalInDescaut"
 
 /////////////APARELHOS CAUTELADOS
 
-function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, data,fiscal, funcao,quantidade,props,postgrad}) {
+function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, data,fiscal, funcao,quantidade,props,postgrad, nSerieChip, carregador, manual}) {
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   
 
-  const dados = 
+  // const dados = 
   
     
-      [
-       
-          {text :  marca, fontSize :10 ,margin : [0, 2,0 ,2]},
-          {text :   modelo, fontSize :10 ,margin : [0, 2,0 ,2]},
-          {text :  imei1, fontSize :10 ,margin : [0, 2,0 ,2]},
-          {text :  numero, fontSize :10 ,margin : [0, 2,0 ,2]},
+  //     [
+
+  //         {text :  "1", fontSize :10 ,margin : [0, 2,0 ,2]},
+  //         {text :  marca, fontSize :10 ,margin : [0, 2,0 ,2]},
+  //         {text :   modelo, fontSize :10 ,margin : [0, 2,0 ,2]},
+  //         {text :  imei1, fontSize :10 ,margin : [0, 2,0 ,2]},
+  //         {text :  numero, fontSize :10 ,margin : [0, 2,0 ,2]},
           
           
-      ];
+          
+  //     ];
        
   
 
@@ -59,21 +61,31 @@ function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, d
     },
 
     {
+      style: 'tableExample',
       table: {
         headerRows: 1,
-        widths: [85, 95, 110, 85],
+        widths: [ 35, 85, 95, 118, 35],
         
         // cabeçalho da tabela fixa
         body: [
           [
-     
             {
-              text: "MARCA",
+              text: "Nº",
               style: "tableHeader",
               fontSize: 10,
               margin: [0, 0, 0, 0],
               bold: true,
             },
+
+            {
+              text: "DESCRIÇÃO",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
             {
               text: "MODELO",
               style: "tableHeader",
@@ -82,30 +94,227 @@ function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, d
               bold: true,
             },
             {
-              text: "IMEI",
+              text: "Nº DE SÉRIE",
               style: "tableHeader",
               fontSize: 10,
               margin: [0, 0, 0, 0],
               bold: true,
             },
             {
-              text: "NÚMERO",
+              text: "QTD",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "1",
               style: "tableHeader",
               fontSize: 10,
               margin: [0, 0, 0, 0],
               bold: true,
             },
 
+            {
+              text: `Celular ${marca}`,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
            
+            {
+              text: modelo,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: imei1,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "1",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
 
           
      
           ],
-          // pega tudo que tinha dentro do array e adiciona mais tabela dinamica
-          dados
+
+          [
+            {
+              text: "2",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Carregador",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: carregador,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "3",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Kit de Manuais",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: manual,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "4",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Chip",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: numero,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: nSerieChip,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "1",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          
+
+          
+            
+
+          
+     
+          
+         
         ],
       },
-      layout: "headerLineOnly",
+     
       margin: [40, 2, 10,20], //esquerda ,cima ,direita ,baixo
       alignment: "center",
     },
@@ -125,7 +334,7 @@ function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, d
         },
         [{text: 'Reconheço que o aparelho e a linha telefônica são de exclusividade da função de ',margin : [60, 0,0 ,0]}, {text: '' ,margin : [194, 0,0 ,0]}],
         {
-            text : [` ${funcao} devendo ser repassado ao meu substituto no ato de sua nomeação e informado a Departamento Geral de Administração (DGA) para que seja elaborado novo Termo de Responsabilidade de Usuário de Telefonia.`],margin : [30, 0,0 ,10],alignment: 'justify', textIndent : 1
+            text : [ { text: `${funcao} do ${unidade}`, bold: true }, ` devendo ser repassado ao meu substituto no ato de sua nomeação e informado a Departamento Geral de Administração (DGA) para que seja elaborado novo Termo de Responsabilidade de Usuário de Telefonia.`],margin : [30, 0,0 ,10],alignment: 'justify', textIndent : 1
         },
 
 
@@ -147,7 +356,7 @@ function UsuarioPDF({ modelo, marca, numero,  nome, rg, unidade, imei1, imei2, d
                 [
                     `                   \n\nDATA:  ${data}   \n\nNOME: ${fiscal}            \n\n ASSINATURA: ____________________________ \n` ,
 
-                    `\n \n Declaro pelo presente documento, que ficam sob minha responsabilidade os bens acima relacionados.\n\nDATA:        ${data}   \n\nNOME:  ${nome}        \n\n ASSINATURA: ____________________________ \n`
+                    `\n \n Declaro pelo presente documento, que ficam sob minha responsabilidade os bens acima relacionados.\n\nDATA:        ${data}   \n\nNOME: ${postgrad} ${nome}        \n\n ASSINATURA: ____________________________ \n`
                     
                 ]
             ]

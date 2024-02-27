@@ -402,7 +402,7 @@ function Modall(props) {
                             className="form-control-label"
                             htmlFor="input-email"
                           >
-                            1º IMEI
+                            1º IMEI 
                           </label>
                           <Input
                             className="form-control-alternative"
