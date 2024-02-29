@@ -1,8 +1,12 @@
+/* eslint-disable no-unused-vars */
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
 
 function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, imei2, numero, data, data_des, marca,funcao, fiscal, postgrad, manual, carregador}) {
+
+
+
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   
 
