@@ -2,7 +2,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 
 
-function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, imei2, numero, data, data_des, marca,funcao, fiscal, postgrad}) {
+function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, imei2, numero, data, data_des, marca,funcao, fiscal, postgrad, manual, carregador}) {
   pdfMake.vfs = pdfFonts.pdfMake.vfs;
   
 
@@ -25,64 +25,82 @@ function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, im
 
   // ISSO É
   const details = [
-    // texto fixo aBaixo do cabeçalho esquerda ,cima ,direita ,baixo
-    {text: [" TERMO DE DEVOLUÇÃO DE USUÁRIO DE TELEFONIA MÓVEL"],  fontSize: 17,
-    margin: [20, 10, 0, 20],
-    bold: true,
-  },
+    {
+      canvas: [
+        {
+          type: 'line',
+          x1: 10,
+          y1: -15,  // Posição vertical inicial
+          x2: 500,
+          y2: -15,  // Posição vertical final
+          lineWidth: 1,
+        }
+      ],
+      },
+
+    {
+      text : ["TERMO DE DEVOLUÇÃO DE USUÁRIO DE TELEFONIA MÓVEL", ],fontSize: 14,decoration: 'underline', alignment: "center",
+      margin: [25, 10, 0, 20],
+      bold: true,
+    },
     {
       ul: ["  ÓRGÃO: POLÍCIA MILITAR DO ESTADO DO PARÁ"],
       margin: [60, 2, 0, 2],
     },
     {
-      ul: [` UNIDADE:  ${unidade},`],bold:true,
+      ul: [
+          
+        { text: [`UNIDADE: `,
+        { text: unidade, bold: true },
+      ]}
+      ],
       margin: [60, 2, 0, 2],
-    },
+  },
     // {
     //     text : `${Modem.nome}`
     // },
     {
-      ul: [` CARGO/FUNÇÃO:  ${funcao}`],
+      ul: [{ text: [`FUNÇÃO: `,
+      { text: funcao, bold: true },
+    ]}],
       margin: [60, 2, 0, 25],
     },
 
     {
       text: [
-        `Eu,${postgrad} ${name} ,RG  ${rg}, declaro ter devolvido o material abaixo descrito:`,
+        'Eu, ',
+       {text: `${postgrad} ${name} ,RG  ${rg},`, bold:true},
+        'declaro ter devolvido o material abaixo descrito:',
       ],
       margin: [53, 2, 0, 25],
     },
 
     {
+      style: 'tableExample',
       table: {
         headerRows: 1,
-        widths: [85, 95, 110, 50,70],
+        widths: [ 35, 85, 95, 118, 35], 
         
         // cabeçalho da tabela fixa
         body: [
           [
+            {
+              text: "Nº",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "DESCRIÇÃO",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
      
-            {
-              text: "APARELHO",
-              style: "tableHeader",
-              fontSize: 10,
-              margin: [0, 0, 0, 0],
-              bold: true,
-            },
-            {
-              text: "IMEI",
-              style: "tableHeader",
-              fontSize: 10,
-              margin: [0, 0, 0, 0],
-              bold: true,
-            },
-            {
-              text: "NÚMERO",
-              style: "tableHeader",
-              fontSize: 10,
-              margin: [0, 0, 0, 0],
-              bold: true,
-            },
+           
             {
               text: "MODELO",
               style: "tableHeader",
@@ -91,18 +109,227 @@ function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, im
               bold: true,
             },
             {
-              text: "DATA DEVOLUÇÃO",
+              text: "Nº DE SÉRIE",
               style: "tableHeader",
               fontSize: 10,
               margin: [0, 0, 0, 0],
               bold: true,
             },
+            {
+              text: "QTD",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
           ],
-          // pega tudo que tinha dentro do array e adiciona mais tabela dinamica
-          dados
+
+          [
+            {
+              text: "1",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: `Celular ${marca}`,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: modelo,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: imei1,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "1",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "2",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Carregador",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: carregador,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "3",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Kit de Manuais",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "xxxx",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: manual,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          [
+            {
+              text: "4",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+
+            {
+              text: "Chip",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+     
+           
+            {
+              text: numero,
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: 'nserie',
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+            },
+            {
+              text: "1",
+              style: "tableHeader",
+              fontSize: 10,
+              margin: [0, 0, 0, 0],
+              bold: true,
+              
+              
+            },
+            
+
+          
+     
+          ],
+
+          
+
+          
+            
+
+          
+     
+          
+         
         ],
       },
-      layout: "headerLineOnly",
+      
       margin: [40, 2, 10,20], //esquerda ,cima ,direita ,baixo
       alignment: "center",
     },
@@ -120,22 +347,30 @@ function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, im
         widths: [250, 250],
 
         body: [
+          [{text: 'RECEBIMENTO', style: 'tableHeader',colSpan:2,alignment: 'center' ,bold :true}, {text: '', style: 'tableHeader'}],
           [
             {
-              text: "RECEBIMENTO",
-              style: "tableHeader",
-              colSpan: 2,
-              alignment: "center",
-              bold: true,
-            },
-            { text: "", style: "tableHeader" },
-          ],
-          [
-            `FISCAL DO CONTRATO : ${fiscal} `,
+              text: [
+                { text: 'FISCAL DO CONTRATO:', bold: true, decoration: 'underline' },
+                { text: `\n\nDATA: ${data} \n\nNOME:`},
+                { text: fiscal, bold: true},
+                
+                `\n\nASSINATURA: ____________________________\n`
+            ]
+             } ,
 
-            `\n\nDATA:    ${data}  \n\nNOME:  ${name}        \n\n ASSINATURA: ____________________________ \n`,
-          ],
-        ],
+             {
+              text: [
+                { text: 'USUÁRIO:', bold: true, decoration: 'underline',  },
+                
+               {text: ` \n Declaro pelo presente documento, que estou devolvendo os bens acima relacionados. \n\nDATA: ${data} \n\nNOME: ` }, 
+                  {text: `${postgrad} ${name}`,bold: true},
+                {text: '\n\n ASSINATURA: ____________________________ '}
+            ] 
+             },
+              
+          ]
+      ]
       },
     },
   ];
@@ -160,17 +395,33 @@ function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, im
     footer: Rodape,
   };
 
-  function pdfFooter(currentPage, pageCount) {
-    return [
+  const pdfFooter = {
+    columns: [
       {
-        text: currentPage + "/" + pageCount,
-
-        alignment: "center",
-        fontSize: 12,
-        margin: [0, 10, 20, 30],
-      },
-    ];
-  }
+        stack: [
+          {
+            canvas: [
+              {
+                type: 'line',
+                x1: 40,
+                y1: 5,
+                x2: 570,
+                y2: 5,
+                lineWidth: 1
+              }
+            ]
+          },
+          { text: 'Rod. Augusto Montenegro, KM 09, nº 8401 – Bairro do Parque Guajará – CEP 66.821.000 – Distrito de Icoaraci – Belém – PA.', fontSize: 8 },
+          { text: 'E-mail: Fiscaltelefonia.pmpa@gmail.com', fontSize: 8 },
+          
+        ],
+        width: '94%',
+        alignment: 'center', // Centraliza o conteúdo dentro da coluna
+      }
+    ],
+    columnGap: 10,
+    margin: [40, 10, 40, 0],
+  };
   const pageDefinition = {
     pageSize: "A4",
     pageMargins: [40, 100, 40, 60],
@@ -186,7 +437,7 @@ function ClientesPDF({ infcauts, idClicked, name, rg, unidade, modelo, imei1, im
           },
           {
             text: [
-              `GOVERNO DO ESTADO DO PARÁ\n SECRETÁRIA DE ESTADO DE SEGURANÇA PÚBLICA E DEFESA SOCIAL\n POLICIAL MILITAR DO PARÁ\n `,
+              `GOVERNO DO ESTADO DO PARÁ\n SECRETÁRIA DE ESTADO DE SEGURANÇA PÚBLICA E DEFESA SOCIAL\n POLÍCIA MILITAR DO ESTADO PARÁ \nDIRETORIA DE TELEMÁTICA `,
             ],
             bold: true,
             alignment: "center",
