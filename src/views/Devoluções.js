@@ -434,15 +434,14 @@ function Pesquisa(e){
                                     numero: infcauts.numero,
                                     data: infcauts.date_caut,
                                     data_des: infcauts.date_devolu,
-                                    marca: infcauts.marca
-
-                                    ,
+                                    marca: infcauts.marca,
                                     funcao: infcauts.funcao,
-
-
                                     unidade: infcauts.unidade,
                                     fiscal: infcauts.fiscal_devolu,
-                                    postgrad: infcauts.postgrad
+                                    postgrad: infcauts.postgrad,
+                                    nserie: infcauts.nserie,
+                                    carregador: infcauts.carregador,
+                                    manual: infcauts.manual
 
                                   })
                                 }
