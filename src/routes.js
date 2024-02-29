@@ -74,13 +74,13 @@ var routes = [
   },
   
   
-  {
-    path: "/createHT",
-    name: "HT",
-    icon: "fas fa fa-walkie-talkie text-primary",
-    component: <Ht />,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/createHT",
+  //   name: "HT",
+  //   icon: "fas fa fa-walkie-talkie text-primary",
+  //   component: <Ht />,
+  //   layout: "/admin",
+  // },
   {
     path: "/createChip",
     name: "Chip",
@@ -89,13 +89,13 @@ var routes = [
     layout: "/admin",
     
   },
-  {
-    path: "/createModem",
-    name: "Modem",
-    icon: "fas fa fa-wifi text-primary",
-    component: <Modem />,
-    layout: "/admin",
-  },
+  // {
+  //   path: "/createModem",
+  //   name: "Modem",
+  //   icon: "fas fa fa-wifi text-primary",
+  //   component: <Modem />,
+  //   layout: "/admin",
+  // },
   {
   path: "/Cautela",
   name: "Cautelar Aparelho",
