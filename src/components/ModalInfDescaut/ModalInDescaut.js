@@ -543,15 +543,6 @@ function Modall(props) {
   const [dataFiscal, setDataFiscal] = useState([]);
   const [dataAcessorios, setDataAcessorios] = useState([]);
 
-  const [nomeMilitar, setNomeMilitar] = useState("");
-  const [listaAparelhos] = useState(props.data);
-  const [loading,setLoading] = useState(false)
-
-  const toggle = () => {
-    setModal(!modal);
-  };
-
-
 
   const [fiscais, setFiscais] = useState([]);
   const [nomeFiscal, setNomeFiscal] = useState("");
