@@ -28,7 +28,7 @@ import {
   Media,
 } from "reactstrap";
 import {useNavigate} from 'react-router-dom'
-import Img from "../../assets/img/brand/yo.jpg"
+import Img from "../../assets/img/brand/pm-pa.png"
 
 const AdminNavbar = (props) => {
   const navigation = useNavigate()
@@ -73,7 +73,7 @@ const AdminNavbar = (props) => {
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Bem-vindo</h6>
                 </DropdownItem>
-                <DropdownItem to="/admin/user-profile" tag={Link}>
+                {/* <DropdownItem to="/admin/user-profile" tag={Link}>
                   <i className="ni ni-single-02" />
                   <span>Meu perfil</span>
                 </DropdownItem>
@@ -83,8 +83,8 @@ const AdminNavbar = (props) => {
                 </DropdownItem>
                 <DropdownItem to="/admin/user-profile" tag={Link}>
                   <i className="ni ni-calendar-grid-58" />
-                  <span>Atividade</span>
-                </DropdownItem>
+                  <span>Atividad</span>
+                </DropdownItem> */}
                 {/* <DropdownItem to="/admin/user-profile" tag={Link}>
                   <i className="ni ni-support-16" />
                   <span>Support</span>   ISSO ERA O SUPORTE ,MAS É DESNECESSÁRIO
