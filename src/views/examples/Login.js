@@ -555,7 +555,14 @@ const Login = () => {
                     Entrar
                   </Button>
                 </div>
+
+               
               </Form>
+              <div className="text-center">
+                  <span>
+                    <p>v1.0.0</p>
+                  </span>
+                </div>
             </CardBody>
           </Card>
         </Col>
