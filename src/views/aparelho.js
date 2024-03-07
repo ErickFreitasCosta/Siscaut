@@ -167,6 +167,9 @@ async function excluirAparelho(id){
     } else {
       setFilter(filteredAparelhos);
     }
+    if( e === ""){
+      setFilter([])
+    }
   }
   // ____________________________________________________________________________________________________________
   return (

@@ -159,7 +159,7 @@ const Sidebar = (props) => {
               </DropdownItem>
               <DropdownItem to="/admin/user-profile" tag={Link}>
                 <i className="ni ni-calendar-grid-58" />
-                <span>Atividade</span>
+                <span>Atividadeeee  </span>
               </DropdownItem>
               {/* <DropdownItem to="/admin/user-profile" tag={Link}>
                 <i className="ni ni-support-16" />

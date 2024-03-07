@@ -47,7 +47,7 @@ import {
   PaginationLink,
 } from "reactstrap";
 
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { format } from "date-fns";
@@ -153,6 +153,9 @@ function Pesquisa(e){
  } else {
    setFilter(filteredmilitar);
  }
+ if( e === ""){
+  setFilter([])
+}
 }
 // ____________________________________________________________________________________________________________
 
@@ -431,15 +434,14 @@ function Pesquisa(e){
                                     numero: infcauts.numero,
                                     data: infcauts.date_caut,
                                     data_des: infcauts.date_devolu,
-                                    marca: infcauts.marca
-
-                                    ,
+                                    marca: infcauts.marca,
                                     funcao: infcauts.funcao,
-
-
                                     unidade: infcauts.unidade,
                                     fiscal: infcauts.fiscal_devolu,
-                                    postgrad: infcauts.postgrad
+                                    postgrad: infcauts.postgrad,
+                                    nserie: infcauts.nserie,
+                                    carregador: infcauts.carregador,
+                                    manual: infcauts.manual
 
                                   })
                                 }

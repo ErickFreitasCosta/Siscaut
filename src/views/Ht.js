@@ -137,6 +137,8 @@ async function excluirHt(id){
   });
 }
 ///////////////////////////////////////////////////////////////////////////////////////
+
+////////////////PESQUISA/////////////////////////////
 const [filter, setFilter] = useState([]);
 
 function Pesquisa(e){
@@ -152,7 +154,12 @@ function Pesquisa(e){
  } else {
    setFilter(filteredHts);
  }
+ if( e === ""){
+  setFilter([])
 }
+}
+
+/////////////////////////////
 
   return (
     <>
@@ -252,8 +259,6 @@ function Pesquisa(e){
                               title='Ht'
                               func={() => excluirHt(hts.id)} />
                             </div>
-
-
                           </div>
                         </td>
                       </tr>
